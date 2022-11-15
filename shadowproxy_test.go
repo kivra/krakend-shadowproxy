@@ -54,3 +54,18 @@ func TestTemplatePathVarsWithUpperCase(t *testing.T) {
 		t.Fatalf("expected len '3', got '%d'", len(urlKeys))
 	}
 }
+
+func TestTemplateSameNameForVarAndFixedPath(t *testing.T) {
+	// make sure '{key}' is replaced, but not 'key'
+	urlPattern, urlKeys := parseURLPattern("/v1/key/{key}")
+	expected := "/v1/key/{{.Key}}"
+	if urlPattern != expected {
+		t.Fatalf("expected '%s', got '%s'", expected, urlPattern)
+	}
+	if urlKeys[0] != "Key" {
+		t.Fatalf("expected 'Ukey', got '%s'", urlKeys[0])
+	}
+	if len(urlKeys) != 1 {
+		t.Fatalf("expected len '1', got '%d'", len(urlKeys))
+	}
+}
