@@ -23,6 +23,7 @@ request is ignored.
   {
     "endpoint": "/v1/user/{ukey}",
     "method": "POST",
+    "output_encoding": "no-op",
     "extra_config": {
       "kivra/shadowproxy": {
         "host": [ "https://other.backend.com" ],
@@ -34,7 +35,8 @@ request is ignored.
       {
         "host": [ "https://my.backend.com" ],
         "url_pattern": "/v2/user/{ukey}",
-        "method": "POST"
+        "method": "POST",
+        "encoding": "no-op"
       }
     ]
   }
