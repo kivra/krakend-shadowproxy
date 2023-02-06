@@ -11,22 +11,25 @@ import (
 	"golang.org/x/text/language"
 )
 
-func ProxyFactory(pf proxy.Factory) proxy.FactoryFunc {
-	return func(cfg *config.EndpointConfig) (proxy.Proxy, error) {
-		next, err := pf.New(cfg)
-		if err != nil {
-			panic(err)
-		}
-		prxCfg, ok := configGetter(cfg.ExtraConfig)
-		if !ok {
-			return next, nil
-		}
-		shadowProxy, err := pf.New(shadowConfig(*cfg, *prxCfg))
-		if err != nil {
-			panic(err)
-		}
-		return proxy.ShadowMiddleware(next, shadowProxy), nil
+type shadowFactory struct {
+	f proxy.Factory
+}
+
+func (s shadowFactory) New(cfg *config.EndpointConfig) (p proxy.Proxy, err error) {
+	if len(cfg.Backend) == 0 {
+		err = proxy.ErrNoBackends
+		return
 	}
+	p, err = s.f.New(cfg)
+	if prxCfg, ok := configGetter(cfg.ExtraConfig); ok {
+		pShadow, _ := s.f.New(shadowConfig(*cfg, *prxCfg))
+		p = proxy.ShadowMiddleware(p, pShadow)
+	}
+	return
+}
+
+func NewShadowFactory(f proxy.Factory) proxy.Factory {
+	return shadowFactory{f}
 }
 
 func shadowConfig(cfg config.EndpointConfig, prxCfg ProxyConfig) *config.EndpointConfig { // nolint
