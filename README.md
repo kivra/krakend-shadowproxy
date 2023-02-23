@@ -70,3 +70,10 @@ The request method used for requests to the shadow backend (default `"GET"`).
 ### `disable_host_sanitize` (optional)
 
 Disable host sanitization for prodived `host` list (default `false`).
+
+---
+
+### `timeout` (optional)
+
+The timeout for the request to the shadow backend as a `Go` duration, for
+example `10s`. Defaults to the endpoint timeout.
