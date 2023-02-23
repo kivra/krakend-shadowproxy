@@ -17,7 +17,7 @@ func ProxyFactory(pf proxy.Factory) proxy.FactoryFunc {
 		if err != nil {
 			panic(err)
 		}
-		prxCfg, ok := configGetter(cfg.ExtraConfig)
+		prxCfg, ok := configGetter(cfg)
 		if !ok {
 			return next, nil
 		}
@@ -25,7 +25,7 @@ func ProxyFactory(pf proxy.Factory) proxy.FactoryFunc {
 		if err != nil {
 			panic(err)
 		}
-		return proxy.ShadowMiddleware(next, shadowProxy), nil
+		return proxy.ShadowMiddlewareWithTimeout(prxCfg.Timeout, next, shadowProxy), nil
 	}
 }
 
@@ -38,7 +38,7 @@ func shadowConfig(cfg config.EndpointConfig, prxCfg ProxyConfig) *config.Endpoin
 		HostSanitizationDisabled: prxCfg.HostSanitizationDisabled,
 		URLKeys:                  urlKeys,
 		Encoding:                 encoding.NOOP,
-		Timeout:                  cfg.Timeout,
+		Timeout:                  prxCfg.Timeout,
 	}}
 	return &cfg
 }

@@ -3,8 +3,8 @@ module github.com/kivra/krakend-shadowproxy
 go 1.19
 
 require (
-	github.com/luraproject/lura/v2 v2.0.5
-	golang.org/x/text v0.4.0
+	github.com/luraproject/lura/v2 v2.2.4
+	golang.org/x/text v0.7.0
 )
 
 require (
@@ -12,4 +12,4 @@ require (
 	github.com/valyala/fastrand v1.1.0 // indirect
 )
 
-replace github.com/luraproject/lura/v2 v2.0.5 => github.com/kivra/lura/v2 v2.0.6-0.20220705080224-3d4d9afe2806
+replace github.com/luraproject/lura/v2 v2.2.4 => github.com/kivra/lura/v2 v2.2.4-0.20230223094107-954b8442a9d9

@@ -1,8 +1,8 @@
-github.com/kivra/lura/v2 v2.0.6-0.20220705080224-3d4d9afe2806 h1:/gVy30uohsIe7nfJHq2ik+BCn+s4dB4pATcQgjv6+SA=
-github.com/kivra/lura/v2 v2.0.6-0.20220705080224-3d4d9afe2806/go.mod h1:r2N4j89Snm1j+Y9CCa9cYR1T2ETRL0E4y9P+DgymqX4=
+github.com/kivra/lura/v2 v2.2.4-0.20230223094107-954b8442a9d9 h1:leO74jYgiPoJCvht+c94UAqIFugpLoVT848dBaWrFnc=
+github.com/kivra/lura/v2 v2.2.4-0.20230223094107-954b8442a9d9/go.mod h1:9I9v5M0Rlg4jlrX3UhgKZ4jbP9gxEvYnJq6VZ9pj/L8=
 github.com/krakendio/flatmap v1.1.1 h1:rGBNVpBY0pMk6cLOwerVzoKY4HELnpu0xvqB231lOCQ=
 github.com/krakendio/flatmap v1.1.1/go.mod h1:KBuVkiH5BcBFRa5A1HdSHDn8a8LzsyRTKZArX0vqTbo=
 github.com/valyala/fastrand v1.1.0 h1:f+5HkLW4rsgzdNoleUOB69hyT9IlD2ZQh9GyDMfb5G8=
 github.com/valyala/fastrand v1.1.0/go.mod h1:HWqCzkrkg6QXT8V2EXWvXCoow7vLwOFN002oeRzjapQ=
-golang.org/x/text v0.4.0 h1:BrVqGRd7+k1DiOgtnFvAkoQEWQvBc25ouMJM6429SFg=
-golang.org/x/text v0.4.0/go.mod h1:mrYo+phRRbMaCq/xk9113O4dZlRixOauAjOtrjsXDZ8=
+golang.org/x/text v0.7.0 h1:4BRB4x83lYWy72KwLD/qYDuTu7q9PjSagHvijDw7cLo=
+golang.org/x/text v0.7.0/go.mod h1:mrYo+phRRbMaCq/xk9113O4dZlRixOauAjOtrjsXDZ8=
