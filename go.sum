@@ -1,5 +1,5 @@
-github.com/kivra/lura/v2 v2.2.4-0.20230228074405-0219a18b1274 h1:2pio79ttRlMT7NNR8zIgdZtg2h15O0qFITLY+Kv+crM=
-github.com/kivra/lura/v2 v2.2.4-0.20230228074405-0219a18b1274/go.mod h1:9I9v5M0Rlg4jlrX3UhgKZ4jbP9gxEvYnJq6VZ9pj/L8=
+github.com/kivra/lura/v2 v2.2.4-0.20230228151500-8e359d392b5d h1:VTaJilxu9bmFtq3sZjcMwdmU4iuoMhL1RSe20b3QWis=
+github.com/kivra/lura/v2 v2.2.4-0.20230228151500-8e359d392b5d/go.mod h1:9I9v5M0Rlg4jlrX3UhgKZ4jbP9gxEvYnJq6VZ9pj/L8=
 github.com/krakendio/flatmap v1.1.1 h1:rGBNVpBY0pMk6cLOwerVzoKY4HELnpu0xvqB231lOCQ=
 github.com/krakendio/flatmap v1.1.1/go.mod h1:KBuVkiH5BcBFRa5A1HdSHDn8a8LzsyRTKZArX0vqTbo=
 github.com/valyala/fastrand v1.1.0 h1:f+5HkLW4rsgzdNoleUOB69hyT9IlD2ZQh9GyDMfb5G8=

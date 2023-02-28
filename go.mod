@@ -12,4 +12,4 @@ require (
 	github.com/valyala/fastrand v1.1.0 // indirect
 )
 
-replace github.com/luraproject/lura/v2 v2.2.4 => github.com/kivra/lura/v2 v2.2.4-0.20230228074405-0219a18b1274
+replace github.com/luraproject/lura/v2 v2.2.4 => github.com/kivra/lura/v2 v2.2.4-0.20230228151500-8e359d392b5d
