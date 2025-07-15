@@ -1,59 +1,64 @@
-linters-settings:
-  govet:
-    check-shadowing: true
-    settings:
-      printf:
-        funcs:
-          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Infof
-          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Warnf
-          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Errorf
-          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Fatalf
-  golint:
-    min-confidence: 0
-  gocyclo:
-    min-complexity: 15
-  maligned:
-    suggest-new: true
-  dupl:
-    threshold: 100
-  goconst:
-    min-len: 2
-    min-occurrences: 2
-  depguard:
-    list-type: blacklist
-    packages:
-      # logging is allowed only by logutils.Log, logrus
-      # is allowed to use only in logutils package
-      - github.com/sirupsen/logrus
-    packages-with-error-messages:
-      github.com/sirupsen/logrus: "logging is allowed only by logutils.Log"
-  misspell:
-    locale: US
-  goimports:
-    local-prefixes: github.com/golangci/golangci-lint
-  gocritic:
-    enabled-tags:
-      - diagnostic
-      - experimental
-      - opinionated
-      - performance
-      - style
-    disabled-checks:
-      - wrapperFunc
-      - dupImport # https://github.com/go-critic/go-critic/issues/845
-      - ifElseChain
-      - octalLiteral
-  funlen:
-    lines: 100
-    statements: 50
+---
+version: "2"
+
+formatters:
+  settings:
+    goimports:
+      local-prefixes:
+        - github.com/golangci/golangci-lint
+  enable:
+    - gofmt
+    - goimports
 
 linters:
-  # please, do not use `enable-all`: it's deprecated and will be removed soon.
-  # inverted configuration with `enable-all` and `disable` is not scalable during updates of golangci-lint
-  disable-all: true
+  settings:
+    depguard:
+      rules:
+        Main:
+          deny:
+            - pkg: "github.com/sirupsen/logrus"
+    govet:
+      enable:
+        - shadow
+      settings:
+        printf:
+          funcs:
+            - (github.com/golangci/golangci-lint/pkg/logutils.Log).Infof
+            - (github.com/golangci/golangci-lint/pkg/logutils.Log).Warnf
+            - (github.com/golangci/golangci-lint/pkg/logutils.Log).Errorf
+            - (github.com/golangci/golangci-lint/pkg/logutils.Log).Fatalf
+    gocyclo:
+      min-complexity: 15
+    dupl:
+      threshold: 100
+    goconst:
+      min-len: 2
+      min-occurrences: 2
+    misspell:
+      locale: US
+    gocritic:
+      enabled-tags:
+        - diagnostic
+        - experimental
+        - opinionated
+        - performance
+        - style
+      disabled-checks:
+        - wrapperFunc
+        - dupImport  # https://github.com/go-critic/go-critic/issues/845
+        - ifElseChain
+        - octalLiteral
+    funlen:
+      lines: 100
+      statements: 50
+  default: none
   enable:
+    # don't enable:
+    # - gochecknoglobals
+    # - gocognit
+    # - godox
+    # - prealloc
     - bodyclose
-    - deadcode
     - depguard
     - dogsled
     - dupl
@@ -63,50 +68,30 @@ linters:
     - goconst
     - gocritic
     - gocyclo
-    - gofmt
-    - goimports
-    - golint
     - gosec
-    - gosimple
     - govet
     - ineffassign
     - misspell
     - nakedret
-    - scopelint
     - staticcheck
-    - structcheck
-    - stylecheck
-    - typecheck
     - unconvert
     - unparam
     - unused
-    - varcheck
     - whitespace
-
-  # don't enable:
-  # - gochecknoglobals
-  # - gocognit
-  # - godox
-  # - maligned
-  # - prealloc
-
-run:
-  skip-dirs:
-    - test/testdata_etc
-  skip-files:
-    - internal/cache/.*_test.go
-
-issues:
-  exclude-rules:
-    - path: internal/(cache|renameio)/
-      linters:
-        - gochecknoinits
-        - gocyclo
-        - funlen
+  exclusions:
+    rules:
+      - path: internal/(cache|renameio)/
+        linters:
+          - gochecknoinits
+          - gocyclo
+          - funlen
+    paths:
+      - test/testdata_etc
+      - internal/cache/.*_test.go
 
 # golangci.com configuration
 # https://github.com/golangci/golangci/wiki/Configuration
 service:
-  golangci-lint-version: 1.20.x # use the fixed version to not introduce new linters unexpectedly
+  golangci-lint-version: 1.20.x  # use the fixed version to not introduce new linters unexpectedly
   prepare:
     - echo "here I can run custom commands, but no preparation needed for this repo"
