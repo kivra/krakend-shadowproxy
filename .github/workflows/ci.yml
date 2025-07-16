@@ -1,5 +1,11 @@
-on: [push]
+---
+name: ci
+permissions:
+  pull-requests: read
 
+on:
+  push:
+  
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
