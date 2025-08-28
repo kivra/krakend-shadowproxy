@@ -5,12 +5,12 @@ go 1.23.0
 toolchain go1.24.5
 
 require (
-	github.com/luraproject/lura/v2 v2.10.2
+	github.com/luraproject/lura/v2 v2.11.0
 	golang.org/x/text v0.28.0
 )
 
 require (
-	github.com/krakendio/flatmap v1.1.1 // indirect
+	github.com/krakend/flatmap v1.2.0 // indirect
 	github.com/valyala/fastrand v1.1.0 // indirect
 )
 
