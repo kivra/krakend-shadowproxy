@@ -1,12 +1,12 @@
 module github.com/kivra/krakend-shadowproxy
 
-go 1.23.0
+go 1.24.0
 
 toolchain go1.24.5
 
 require (
 	github.com/luraproject/lura/v2 v2.11.0
-	golang.org/x/text v0.28.0
+	golang.org/x/text v0.29.0
 )
 
 require (
