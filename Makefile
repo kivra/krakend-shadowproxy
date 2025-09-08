@@ -1,4 +1,4 @@
-GOLANG_VERSION := 1.23
+GOLANG_VERSION := 1.24
 
 test:
 	docker run --rm -it -v "${PWD}:/app" -w /app golang:${GOLANG_VERSION} go test -v .
